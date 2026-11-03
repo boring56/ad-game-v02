@@ -49,7 +49,7 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;displa
 #ov3{container-type:size;position:fixed;inset:0;z-index:50}/* 寶物視窗遮罩蓋滿整個螢幕（含上方資訊列與下方按鈕列），不只遊戲畫面 */
 #ov3>.pi{position:relative;width:86%;width:min(86cqw,47cqh);aspect-ratio:572/1000;margin-bottom:8%;padding:0;border:0;border-radius:0;background:url(img/gif_pop/01_frame.png) center/100% 100% no-repeat;box-shadow:none;filter:drop-shadow(0 12px 26px rgba(0,10,40,.55));animation:pmpop .45s cubic-bezier(.2,1.5,.4,1) both}
 .pi>img,.pi>button,.pi>#pz{position:absolute;left:0;right:0;margin:0 auto;display:block}
-.pi .pi-mark{top:20.8%;width:32%;margin:0;z-index:1;animation:pmpop .5s .35s cubic-bezier(.2,1.5,.4,1) both,pifl 3s 1s ease-in-out infinite}.pi .pi-mark.l{left:5%;right:auto}.pi .pi-mark.r{left:auto;right:5%}/* 10_mark：標題禮物左右各一 */
+.pi .pi-mark{top:20.8%;width:18%;margin:0;z-index:1;animation:pmpop .5s .35s cubic-bezier(.2,1.5,.4,1) both,pifl 3s 1s ease-in-out infinite}.pi .pi-mark.r{left:auto;right:12%}/* 10_mark：標題禮物右側一個 */
 .pi .pi-logo{top:5%;width:70%;animation:pifl 3s ease-in-out infinite}
 .pi .pi-title{top:16%;width:94%;animation:pmpop .5s .15s cubic-bezier(.2,1.5,.4,1) both}
 .pi #pz{top:41%;width:72%;height:34.5%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:3% 4%}
@@ -127,7 +127,7 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;displa
 <div id="stage"><canvas id="cv"></canvas>
 <div class="ov" id="ov1"><div class="hm" id="hm"><button class="b hb" id="go">▶ 開始</button><button class="b hb" id="howto">📖 遊戲教學</button></div></div>
 <div class="ov" id="ov4" style="display:none"><div class="tu"><div class="tu-ic">📖</div><div class="tu-rb">遊戲教學</div><div class="tu-sub">守住城牆，擊退冰雪大軍！</div><div class="tu-ls" id="tt"></div><div class="pb"><button class="b pri" id="tstart">⚔ 開始挑戰！</button><button class="b" id="tback">返回</button></div></div></div>
-<div class="ov" id="ov3" style="display:none"><div class="pi" role="dialog" aria-label="Boss 寶物！恭喜開啟！專屬優惠活動"><img class="pi-logo" id="plogo" alt=""><img class="pi-title" id="ptitle" alt="Boss 寶物！恭喜開啟！專屬優惠活動"><img class="pi-mark l" alt=""><img class="pi-mark r" alt=""><div id="pz"></div><button id="pweb"><img id="pwebi" alt="查看活動優惠"></button><button id="pcont"><img id="pconti" alt="繼續遊玩"></button></div></div>
+<div class="ov" id="ov3" style="display:none"><div class="pi" role="dialog" aria-label="Boss 寶物！恭喜開啟！專屬優惠活動"><img class="pi-logo" id="plogo" alt=""><img class="pi-title" id="ptitle" alt="Boss 寶物！恭喜開啟！專屬優惠活動"><img class="pi-mark r" alt=""><div id="pz"></div><button id="pweb"><img id="pwebi" alt="查看活動優惠"></button><button id="pcont"><img id="pconti" alt="繼續遊玩"></button></div></div>
 <div class="ov" id="ov2" style="display:none"><div class="fp" role="dialog" aria-label="城牆失守">
 <div class="fp-t"><img src="img/fail_pop/05_time.png" alt="存活時間"><b id="goT">0:00</b><em id="goNB">🏆 新紀錄</em></div>
 <div class="fp-k"><div style="--d:0s"><img src="img/fail_pop/02_monster.png" alt="小兵"><b id="goM">0</b></div><div style="--d:.08s"><img src="img/fail_pop/03_monster.png" alt="頭領"><b id="goC">0</b></div><div style="--d:.16s"><img src="img/fail_pop/04_monster.png" alt="Boss"><b id="goB">0</b></div></div>
