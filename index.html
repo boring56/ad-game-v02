@@ -73,43 +73,27 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;displa
 .ov .b:not(.hb){background:linear-gradient(#fff,#d4eaf8);border-color:#3d7fa8;color:#123650;box-shadow:0 3px 0 #3d7fa8;font-weight:800;transition:transform .1s}
 .ov .b.pri{background:linear-gradient(#ffe68a,#ffb81f);border-color:#c98a00;color:#4a2a00;box-shadow:0 3px 0 #b07800}
 .ov .b:not(.hb):active{transform:translateY(2px);box-shadow:0 1px 0 #3d7fa8}.ov .b.pri:active{box-shadow:0 1px 0 #b07800}
-#ov2{position:fixed;inset:0;z-index:40;/* 結算畫面遮罩蓋滿整個螢幕 */background:radial-gradient(circle at 50% 42%,rgba(140,25,40,.5),rgba(6,14,30,.86) 72%);overflow:hidden}
-#ov2>.go{position:relative;width:86%;max-width:330px;box-sizing:border-box;padding:44px 16px 16px;border:3px solid #3d7fa8;border-radius:20px;background:linear-gradient(#fff,#dceffb);box-shadow:0 5px 0 #2d6688,0 0 0 6px rgba(170,225,255,.28),0 16px 40px rgba(0,0,0,.5);animation:gopop .5s cubic-bezier(.2,1.6,.4,1) both}
-.go-ic{position:absolute;left:50%;top:-40px;width:76px;height:76px;margin-left:-38px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff8a8a,#a3121f);border:3px solid #cdeeff;box-shadow:0 4px 0 #5e0a12,0 0 22px rgba(255,90,90,.7);font-size:36px;line-height:72px;animation:goshake 2.4s ease-in-out .5s infinite}
-.go-ic i{position:absolute;right:-8px;top:-8px;font-size:28px;font-style:normal;line-height:1;animation:gobang 1.2s ease-in-out infinite}
-.go-rb{position:relative;display:inline-block;margin:0 0 6px;padding:5px 26px;font-size:22px;font-weight:900;color:#fff;background:linear-gradient(#ff6b6b,#c81e1e);border-radius:6px;box-shadow:0 3px 0 #8a0f0f;text-shadow:0 2px 0 rgba(0,0,0,.25)}
-.go-rb::before,.go-rb::after{content:'';position:absolute;top:8px;border:14px solid #a51515;z-index:-1}.go-rb::before{left:-18px;border-left-color:transparent}.go-rb::after{right:-18px;border-right-color:transparent}
-.go-sub{color:#4a6a85;font-weight:700;font-size:13px}
-.go-time{position:relative;margin:12px 0 8px;padding:8px 10px 6px;border-radius:14px;background:linear-gradient(#1d4d6e,#0e2b40);box-shadow:inset 0 2px 0 rgba(255,255,255,.15),0 3px 0 #0a1f2e;animation:goin .4s ease-out .25s both}
-.go-time span{display:block;color:#9fd3f2;font-size:12px;font-weight:700;letter-spacing:2px}
-.go-time b{display:block;font:44px/1.05 Impact,"Arial Black",sans-serif;color:#ffe27a;letter-spacing:1px;text-shadow:0 3px 0 #a86a00,0 0 14px rgba(255,210,80,.45)}
-.go-time em{display:none;position:absolute;right:-10px;top:-12px;padding:4px 9px;border:2px solid #fff;border-radius:999px;background:linear-gradient(#ffe68a,#ffb81f);color:#5a2e00;font-style:normal;font-weight:900;font-size:13px;box-shadow:0 3px 0 #b07800,0 0 12px rgba(255,200,60,.8);transform:rotate(10deg)}
-.go-time.nb em{display:block;animation:gostamp .5s cubic-bezier(.2,1.8,.4,1) 1.1s both}
-.go-k{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-.go-k>div{padding:7px 2px 5px;border:2px solid #9cc9e4;border-radius:12px;background:linear-gradient(#fff,#eaf6fd);box-shadow:0 2px 0 #9cc9e4;animation:goin .4s ease-out both;animation-delay:calc(.4s + var(--d))}
-.go-k b{display:block;font:24px/1.1 Impact,"Arial Black",sans-serif;color:#17405c}.go-k span{font-size:12px;font-weight:700;color:#4a6a85}
-.go-k .sl{--c0:#e4f8ff;--c1:#8ad6f7;--c2:#3f9fd6;--cb:rgba(25,80,130,.75);--ey:#14233a;--ck:#eafcff;position:relative;display:block;width:26px;height:21px;margin:2px auto 3px;border:1.5px solid var(--cb);border-radius:50% 50% 42% 42%/64% 64% 36% 36%;background:radial-gradient(circle at 36% 55%,var(--ey) 1.8px,transparent 2.3px),radial-gradient(circle at 64% 55%,var(--ey) 1.8px,transparent 2.3px),linear-gradient(var(--c0),var(--c1) 55%,var(--c2));box-shadow:inset 0 4px 0 -1px rgba(255,255,255,.5)}
-.go-k .sl.k{width:28px}.go-k .sl::before{content:'';position:absolute;left:50%;pointer-events:none}
-.go-k[data-d="snow"] .sl:not(.k){box-shadow:inset 0 5px 0 -1px #fff}
-.go-k[data-d="snow"] .sl.k::before{top:-8px;width:18px;height:9px;margin-left:-9px;background:linear-gradient(#f2fbff,#5fb0e6);clip-path:polygon(0 100%,15% 20%,30% 100%,50% 0,70% 100%,85% 20%,100% 100%)}
-.go-k[data-d="leaf"] .sl:not(.k)::before{top:-7px;width:13px;height:8px;margin-left:-6.5px;background:radial-gradient(ellipse 48% 42% at 25% 45%,#58c46a 92%,transparent 100%),radial-gradient(ellipse 48% 42% at 75% 45%,#7fdc6a 92%,transparent 100%),linear-gradient(#3d7a2c,#3d7a2c) 50% 100%/1.5px 5px no-repeat}
-.go-k[data-d="leaf"] .sl.k::before{top:-10px;width:30px;height:12px;margin-left:-15px;background:var(--ck);clip-path:polygon(22% 100%,12% 45%,0 30%,10% 34%,8% 0,16% 38%,30% 100%,70% 100%,84% 38%,92% 0,90% 34%,100% 30%,88% 45%,78% 100%)}
-.go-k[data-d="crystal"] .sl:not(.k)::before{top:-8px;width:7px;height:11px;margin-left:-2px;background:linear-gradient(90deg,#f6eeff 0 50%,#a77cf0 50%);clip-path:polygon(0 100%,0 40%,50% 0,100% 40%,100% 100%)}
-.go-k[data-d="crystal"] .sl.k::before{top:-12px;width:22px;height:14px;margin-left:-11px;background:linear-gradient(90deg,#9b6cf0,#f6eeff 50%,#9b6cf0);clip-path:polygon(0 100%,0 55%,13% 35%,26% 55%,26% 100%,36% 100%,36% 30%,50% 0,64% 30%,64% 100%,74% 100%,74% 55%,87% 35%,100% 55%,100% 100%)}
-.go-k[data-d="horn"] .sl::before{top:-5px;width:22px;height:8px;margin-left:-11px;background:var(--ck);clip-path:polygon(4% 100%,0 0,30% 85%,70% 85%,100% 0,96% 100%)}
-.go-k[data-d="horn"] .sl.k::before{top:-9px;width:30px;height:12px;margin-left:-15px}
-.go-k[data-d="horn"] .sl{box-shadow:0 0 0 0 transparent;background:radial-gradient(circle at 36% 52%,var(--ey) 2px,transparent 2.6px),radial-gradient(circle at 64% 52%,var(--ey) 2px,transparent 2.6px),radial-gradient(circle at 45% 78%,#fff 1px,transparent 1.4px),radial-gradient(circle at 55% 78%,#fff 1px,transparent 1.4px),linear-gradient(var(--c0),var(--c1) 55%,var(--c2))}
-.go-k .bs{display:block;height:21px;margin:2px 0 3px;font-size:19px;line-height:21px;font-style:normal}
-.go-row{display:flex;align-items:center;justify-content:space-between;margin-top:7px;padding:6px 12px;border:2px solid #b9dcef;border-radius:10px;background:#eef7fd;font-weight:700;font-size:14px;color:#2b5573;animation:goin .4s ease-out both;animation-delay:calc(.4s + var(--d))}
-.go-row b{font:19px/1 Impact,"Arial Black",sans-serif;color:#17405c}.go-row b.gd{color:#d08a00;text-shadow:0 1px 0 #fff3c4}
-#ov2 .pb{margin-top:14px}#ov2 .pb .b.pri{position:relative;overflow:hidden;flex:1.4;font-size:17px;animation:pmpulse 1.4s ease-in-out 1s infinite}
-#ov2 .pb .b.pri::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.75) 50%,transparent 65%);background-size:250% 100%;animation:shine 2.2s ease-in-out infinite}
+#ov2{position:fixed;inset:0;z-index:40;container-type:size;/* 結算畫面遮罩蓋滿整個螢幕 */background:radial-gradient(circle at 50% 42%,rgba(140,25,40,.5),rgba(6,14,30,.86) 72%);overflow:hidden}
+#ov2>.fp{position:relative;padding:0;border:0;border-radius:0;box-shadow:none;width:min(88cqw,57cqh);max-width:460px;aspect-ratio:1027/1532;container-type:inline-size;background:url(img/fail_pop/01_frame.png) center/100% 100% no-repeat;filter:drop-shadow(0 12px 26px rgba(0,10,40,.55));animation:gopop .5s cubic-bezier(.2,1.6,.4,1) both}/* 結算視窗（img/fail_pop）：位置用框圖的百分比，字級用 cqw 跟著框圖縮放 */
+.fp>div{position:absolute;left:0;right:0;margin:0 auto}.fp img{display:block;width:100%;pointer-events:none}
+.fp-t{top:31.5%;width:62%;animation:goin .4s ease-out .25s both}
+.fp-t b{position:absolute;left:0;right:0;top:61%;transform:translateY(-50%);text-align:center;font:10.5cqw/1 Impact,"Arial Black",sans-serif;color:#ffe27a;letter-spacing:.3cqw;text-shadow:0 .6cqw 0 #a86a00,0 0 3cqw rgba(255,210,80,.45)}
+.fp-t em{display:none;position:absolute;right:-6%;top:12%;padding:.8cqw 2.2cqw;border:.5cqw solid #fff;border-radius:999px;background:linear-gradient(#ffe68a,#ffb81f);color:#5a2e00;font-style:normal;font-weight:900;font-size:3.4cqw;white-space:nowrap;box-shadow:0 .7cqw 0 #b07800}
+.fp-t.nb em{display:block;animation:gostamp .5s cubic-bezier(.2,1.8,.4,1) 1.1s both}
+.fp-k{top:45.5%;width:82%;display:flex;justify-content:space-between}
+.fp-k>div{position:relative;width:31.5%;animation:goin .4s ease-out both;animation-delay:calc(.4s + var(--d))}
+.fp-k b{position:absolute;left:0;right:0;top:53%;transform:translateY(-50%);text-align:center;font:7cqw/1 Impact,"Arial Black",sans-serif;color:#17405c}
+.fp-r{width:88%;animation:goin .4s ease-out both;animation-delay:calc(.4s + var(--d))}
+.fp-r b{position:absolute;right:9%;top:50%;transform:translateY(-50%);font:6.2cqw/1 Impact,"Arial Black",sans-serif;color:#17405c}.fp-r b.gd{color:#d08a00;text-shadow:0 .3cqw 0 #fff3c4}
+.fp-b{top:78.5%;width:90%;display:flex;justify-content:space-between}
+.fp-b button{width:49%;padding:0;border:0;background:none;cursor:pointer;line-height:0;-webkit-tap-highlight-color:transparent}
+.fp-b #again{animation:pmpulse 1.4s ease-in-out 1s infinite}.fp-b button:active{filter:brightness(.85);transform:scale(.96)}.fp-b #again:active{animation:none}
 @keyframes gopop{0%{transform:scale(.4) translateY(30px);opacity:0}100%{transform:none;opacity:1}}
 @keyframes goin{0%{transform:translateY(10px);opacity:0}100%{transform:none;opacity:1}}
 @keyframes goshake{0%,70%,100%{transform:rotate(0)}74%{transform:rotate(-10deg)}80%{transform:rotate(9deg)}86%{transform:rotate(-6deg)}92%{transform:rotate(3deg)}}
 @keyframes gobang{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.25) rotate(12deg)}}
 @keyframes gostamp{0%{transform:scale(2.6) rotate(-20deg);opacity:0}100%{transform:rotate(10deg);opacity:1}}
-@media (prefers-reduced-motion:reduce){#ov2>.go,.go-ic,.go-ic i,.go-time,.go-time.nb em,.go-k>div,.go-row,#ov2 .pb .b.pri,#ov2 .pb .b.pri::after{animation:none}}
+@media (prefers-reduced-motion:reduce){#ov2>.fp,.fp-t,.fp-t.nb em,.fp-k>div,.fp-r,.fp-b #again{animation:none}}
 #ov1{position:fixed;z-index:20;background:var(--bar);align-items:stretch;justify-content:center}
 #ov1>.hm{height:100%;aspect-ratio:9/16;max-width:100%;box-sizing:border-box;border:0;border-radius:0;padding:0 0 calc(6% + env(safe-area-inset-bottom,0px));background-color:#cfe8f7;background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:14px;box-shadow:0 0 0 2px var(--bd)}
 #ov4{position:fixed;z-index:30;background:radial-gradient(circle at 50% 40%,rgba(40,120,200,.45),rgba(6,18,36,.86) 72%)}
@@ -143,17 +127,17 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;displa
 <div class="ov" id="ov1"><div class="hm" id="hm"><button class="b hb" id="go">▶ 開始</button><button class="b hb" id="howto">📖 遊戲教學</button></div></div>
 <div class="ov" id="ov4" style="display:none"><div class="tu"><div class="tu-ic">📖</div><div class="tu-rb">遊戲教學</div><div class="tu-sub">守住城牆，擊退冰雪大軍！</div><div class="tu-ls" id="tt"></div><div class="pb"><button class="b pri" id="tstart">⚔ 開始挑戰！</button><button class="b" id="tback">返回</button></div></div></div>
 <div class="ov" id="ov3" style="display:none"><div class="pi" role="dialog" aria-label="Boss 寶物！恭喜開啟！專屬優惠活動"><img class="pi-logo" id="plogo" alt=""><img class="pi-title" id="ptitle" alt="Boss 寶物！恭喜開啟！專屬優惠活動"><div id="pz"></div><button id="pweb"><img id="pwebi" alt="查看活動優惠"></button><button id="pcont"><img id="pconti" alt="繼續遊玩"></button></div></div>
-<div class="ov" id="ov2" style="display:none"><div class="go"><div class="go-ic">🧱<i>💥</i></div><div class="go-rb">城牆失守</div><div class="go-sub">冰雪大軍攻破了城牆…再挑戰一次吧！</div>
-<div class="go-time"><span>存活時間</span><b id="goT">0:00</b><em id="goNB">🏆 新紀錄</em></div>
-<div class="go-k"><div style="--d:0s"><i class="sl"></i><b id="goM">0</b><span>小兵</span></div><div style="--d:.08s"><i class="sl k"></i><b id="goC">0</b><span>頭領</span></div><div style="--d:.16s"><i class="bs">👑</i><b id="goB">0</b><span>Boss</span></div></div>
-<div class="go-row" style="--d:.26s"><span>💰 累計金幣</span><b id="goG" class="gd">0</b></div><div class="go-row" style="--d:.32s"><span>⏱ 本機最佳</span><b id="goBest">0:00</b></div>
-<div class="pb"><button class="b pri" id="again">🔁 再玩一次</button><button class="b" id="home2">🏠 回首頁</button></div></div></div>
+<div class="ov" id="ov2" style="display:none"><div class="fp" role="dialog" aria-label="城牆失守">
+<div class="fp-t"><img src="img/fail_pop/05_time.png" alt="存活時間"><b id="goT">0:00</b><em id="goNB">🏆 新紀錄</em></div>
+<div class="fp-k"><div style="--d:0s"><img src="img/fail_pop/02_monster.png" alt="小兵"><b id="goM">0</b></div><div style="--d:.08s"><img src="img/fail_pop/03_monster.png" alt="頭領"><b id="goC">0</b></div><div style="--d:.16s"><img src="img/fail_pop/04_monster.png" alt="Boss"><b id="goB">0</b></div></div>
+<div class="fp-r" style="top:62.5%;--d:.26s"><img src="img/fail_pop/06_coin.png" alt="累計金幣"><b id="goG" class="gd">0</b></div><div class="fp-r" style="top:69.5%;--d:.32s"><img src="img/fail_pop/07_best.png" alt="本機最佳"><b id="goBest">0:00</b></div>
+<div class="fp-b"><button id="again"><img src="img/fail_pop/08_btn_again.png" alt="再玩一次"></button><button id="home2"><img src="img/fail_pop/09_btn_back.png" alt="回首頁"></button></div></div></div>
 </div>
 <div id="bar">
 <button class="b u" data-i="0"></button><button class="b u" data-i="1"></button><button class="b u" data-i="2"></button>
 <div class="stk"><button class="b sq" id="bp"></button><button class="b sq" id="bm"></button></div></div>
 <script>
-const CONFIG={W:360,H:640,CROP:24,wallY:363,wallH:64,life:100,cap:80,speed:2,bossGap:25,maxBoss:3,bossGrow:1.18,bossCap:6,ty:445,hy:468,tx:[75,180,285],
+const CONFIG={W:360,H:640,CROP:24,VCROP:120,VCROPB:90,wallY:363,wallH:64,life:100,cap:80,speed:2,bossGap:25,maxBoss:3,bossGrow:1.18,bossCap:6,ty:445,hy:468,tx:[75,180,285],
 E:{minion:{hp:20,spd:45,dmg:1,rew:5,r:10,drop:1/25},chief:{hp:90,spd:32,dmg:2,rew:10,r:14,drop:1/5},boss:{hp:400,spd:18,dmg:5,rew:18,r:28,drop:1}},
 HOME:{bg:'img/bg-center.png',side:'img/background.jpg',dim:.5,start:'img/btn-start.png',teach:'img/btn-teach.png'},
 BOSS:{frames:['011','012','013','014','015','016','017','018'].map(n=>'img/boss/'+n+'.png'),atk:['020','021','022','023'].map(n=>'img/boss/'+n+'.png'),hitC:['#c98a1e','#ffd34d'],sand:1,dieC:['255,205,90','190,130,30','255,242,205'],h:110,fps:6,idleFps:3},
@@ -178,7 +162,7 @@ GROUND:{img:'img/snowscape.png',crop:[8,48,1064,381],top:-36,sky:[428,130,226,24
 HERO:{frames:['01_ready','02_press','03_recoil','04_reset'].map(n=>'img/horse/horse_rear_'+n+'.png'),win:'img/horse/horse_win.png',winT:2.6,winBig:1.3,winJump:60,winSay:'贏啦！',winConf:46,size:100,foot:.93},
 WALL:{img:'img/frost_castle_wall.png',crop:[6,112,1069,179],scale:.8},
 // Boss 寶物視窗：全部用 img/gif_pop 的圖；換圖只要改這裡的路徑（prizes 的 t 是圖片替代文字）
-PROMO:{url:'https://seo01.fuma888.com/Manger/register.aspx',dir:'img/gif_pop/',frame:'01_frame.png',logo:'09_logo_FM_Fuma.png',title:'08_title_boss_reward.png',btn:'06_button_view_offers.png',cont:'07_button_continue.png',
+PROMO:{url:'https://fb02.fuma888.com/Manger/register.aspx',dir:'img/gif_pop/',frame:'01_frame.png',logo:'09_logo_FM_Fuma.png',title:'08_title_boss_reward.png',btn:'06_button_view_offers.png',cont:'07_button_continue.png',
 prizes:[{img:'02_button_reward_368.png',t:'體驗金 368'},{img:'03_button_first_deposit.png',t:'首儲 1000 送 1000'},{img:'04_button_slot_rebate.png',t:'電子全館 返 1%'},{img:'05_button_daily_weekly.png',t:'每日任務 每週任務'}]},
 T:[{n:'雪球',cost:0,dmg:5,cd:1,range:260,sp:380},{n:'小槍',cost:50,dmg:10,cd:.5,range:300,sp:520},{n:'機關槍',cost:100,dmg:8,cd:.2,range:330,sp:680}]};
 const C=CONFIG,SPD0=C.speed,$=i=>document.getElementById(i),UB=[...document.querySelectorAll('[data-i]')];
@@ -195,7 +179,7 @@ const MP=C.MAPS.map(m=>{const g=new Image(),w=new Image();g.src=m.ground;w.src=m
 const TI=C.TUR.lv.map(o=>[o.base,o.barrel].map(s=>{const i=new Image();i.src=s;return i})),turOk=l=>TI[l]&&TI[l].every(i=>i.complete&&i.naturalWidth),TC=[];
 function turImg(l,k){const i=TI[l][k],f=C.TUR.css[l];if(!f||f==='none')return i;const n=l*2+k;if(!TC[n]){const c=document.createElement('canvas'),x=c.getContext('2d');c.width=i.naturalWidth;c.height=i.naturalHeight;x.filter=f;x.drawImage(i,0,0);TC[n]=c}return TC[n]}
 function bossImg(e){const bi=BI[e.sk|0],ba=BA[e.sk|0];if(!rdy(bi))return null;const p=1-e.atk/2,o=e.att&&rdy(ba)?ba[e.bump>0?2:p<.3?3:p<.7?0:1]:bi[Math.floor(e.ph*(e.att?C.BOSS.idleFps:C.BOSS.fps))%bi.length];return[o.i,o.w]}
-function fit(){const r=stage.getBoundingClientRect();dpr=devicePixelRatio||1;cv.width=Math.max(1,Math.round(r.width*dpr));cv.height=Math.max(1,Math.round(r.height*dpr));sc=Math.min(r.height/C.H,r.width/(C.W-2*C.CROP));ox=(r.width-C.W*sc)/2;oy=(r.height-C.H*sc)/2}// 上下滿版：以高度為準縮放，手機較細長時左右各裁掉最多 CROP（遊戲座標 px），超過才在上下留邊
+function fit(){const r=stage.getBoundingClientRect();dpr=devicePixelRatio||1;cv.width=Math.max(1,Math.round(r.width*dpr));cv.height=Math.max(1,Math.round(r.height*dpr));sc=Math.max(Math.min(r.height/C.H,r.width/(C.W-2*C.CROP)),Math.min(r.width/C.W,r.height/(C.H-C.VCROP)));ox=(r.width-C.W*sc)/2;const ex=C.H-r.height/sc;oy=ex>0?-Math.max(0,ex-C.VCROPB)*sc:(r.height-C.H*sc)/2}// 上下滿版：以高度為準縮放，手機較細長時左右各裁掉最多 CROP（遊戲座標 px），超過才在上下留邊
 new ResizeObserver(fit).observe(stage);addEventListener('resize',fit);
 // 音效總線：所有聲音 → 總音量 MG → 壓限器 → 喇叭，避免多個聲音疊加爆音
 let MG=null,AS=false,PS=0;const SL={};// AS：音效引擎被暫停凍結中（期間不排新聲音，避免繼續時一次爆出來）；PS：開始暫停的時間
@@ -314,7 +298,7 @@ shake(C.SHAKE.kill,.6);SFX.boom();G.win=C.HERO.winT;G.wj=0;G.wl=0;G.flash=.35;an
 if(d.ch)G.ch.push({x:Math.min(330,Math.max(30,d.x)),y:Math.min(d.y,C.wallY-14),t:20,boss:true})}}
 function showPromo(){G.paused=true;G.promo=true;const P=C.PROMO,d=P.dir||'';$('plogo').src=d+P.logo;$('ptitle').src=d+P.title;$('pwebi').src=d+P.btn;$('pconti').src=d+P.cont;document.querySelector('#ov3>.pi').style.backgroundImage='url('+d+P.frame+')';
 $('pz').innerHTML=P.prizes.map((p,i)=>'<img src="'+d+p.img+'" alt="'+(p.t||'')+'" style="--d:'+(i*.12)+'s">').join('');$('ov3').style.display='flex'}
-{const P=C.PROMO,d=P.dir||'';[P.frame,P.logo,P.title,P.btn,P.cont,...P.prizes.map(p=>p.img)].forEach(f=>{const i=new Image();i.src=d+f})}// 預先載入寶物視窗圖片，開啟時不會一張張跳出來
+{const P=C.PROMO,d=P.dir||'';[P.frame,P.logo,P.title,P.btn,P.cont,...P.prizes.map(p=>p.img)].forEach(f=>{const i=new Image();i.src=d+f})}['01_frame','05_time','02_monster','03_monster','04_monster','06_coin','07_best','08_btn_again','09_btn_back'].forEach(f=>{const i=new Image();i.src='img/fail_pop/'+f+'.png'});// 預先載入寶物視窗、結算視窗圖片，開啟時不會一張張跳出來
 function openChest(c){c.t=0;SFX.chest();if(c.boss){showPromo();return}const r=rnd();
 if(r<.5){const g=10+Math.floor(rnd()*21);G.gold+=g;G.goldTot+=g;bump();SFX.coin();flt(c.x,c.y-10,'+'+g+'💰','#f5b800')}
 else if(r<.8){G.life=Math.min(C.life,G.life+3);SFX.heal();flt(c.x,c.y-10,'修復 +3','#2fbf5f')}
@@ -323,7 +307,7 @@ function upgrade(i){if(G.mode!=='play'||G.paused)return;const t=G.tu[i];if(t.lv>
 if(G.gold<c){toast('金幣不足！還差 '+(c-G.gold)+' 金幣');nogold();SFX.no();return}G.gold-=c;t.lv++;t.up=C.TUR.upT;SFX.up();fx(C.tx[i],C.ty,'#fff',14,70);fx(C.tx[i],C.ty,C.TUR.upC[t.lv],22,130);}
 const fmt=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
 function over(){G.mode='over';SFX.lose();const t=Math.floor(G.t);let nb=t>best;if(nb){best=t;try{localStorage.setItem('ponyBest',best)}catch(e){}}
-$('goNB').parentNode.classList.toggle('nb',nb);{const TH=slTh(),gk=document.querySelector('#ov2 .go-k');gk.dataset.d=TH.deco;gk.querySelectorAll('.sl').forEach(el=>{const c=el.classList.contains('k')?TH.k:TH.m,st=el.style;st.setProperty('--c0',c[0]);st.setProperty('--c1',c[1]);st.setProperty('--c2',c[2]);st.setProperty('--cb',c[3]);st.setProperty('--ey',TH.eye||'#14233a');st.setProperty('--ck',TH.ck)})}$('goBest').textContent=fmt(best);
+$('goNB').parentNode.classList.toggle('nb',nb);$('goBest').textContent=fmt(best);
 const cu=(id,to,dl,f)=>{const el=$(id),d=700,s0=performance.now()+dl;el.textContent=f?f(0):0;const st=n=>{const k=Math.min(1,Math.max(0,(n-s0)/d)),v=Math.round(to*(1-Math.pow(1-k,3)));el.textContent=f?f(v):v;if(k<1)requestAnimationFrame(st)};requestAnimationFrame(st)};
 cu('goT',t,300,fmt);cu('goM',G.k.m,450);cu('goC',G.k.c,530);cu('goB',G.k.b,610);cu('goG',G.goldTot,700);
 $('ov2').style.display='flex'}
