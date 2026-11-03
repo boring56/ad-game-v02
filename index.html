@@ -589,8 +589,8 @@ const lf=G.life/C.life;hv('hl','<small>❤️</small>'+G.life);$('hl').classList
 hv('hb','<small>👹</small>'+(G.bc>=C.maxBoss&&G.t>=G.nb?'<span style="font:700 .62em system-ui">已滿</span>':Math.max(0,Math.ceil(G.nb-G.t))+'s')+(G.bc?'<em>×'+G.bc+'</em>':''));
 UB.forEach(b=>{const i=+b.dataset.i,t=G.tu[i],nx=C.T[t.lv+1],l=nx?t.lv+1:t.lv;
 if(!b.firstChild||b.firstChild.tagName!=='IMG')b.innerHTML='<img class="ti" alt=""><span class="ut"><span class="un"></span><span class="uc"></span></span><i class="up"></i><i class="lv"></i>';
-const k=l+'|'+!!nx;if(b.dataset.k!==k){b.dataset.k=k;const im=b.firstChild;im.src='img/turret/lv'+(l+1)+'_preview.png';im.style.filter=C.TUR.css[l]||'';im.onerror=()=>im.style.display='none';
-b.querySelector('.lv').textContent='Lv'+(l+1);b.querySelector('.un').textContent=C.T[l].n;b.querySelector('.uc').innerHTML=nx?'<small>💰</small>'+nx.cost:'<small>★</small>MAX';fitU(b);b.setAttribute('aria-label',['左','中','右'][i]+'砲台 '+(nx?'升級到 '+nx.n+'，'+nx.cost+' 金幣':'已滿級'))}
+const k=l+'|'+!!nx;if(b.dataset.k!==k){b.dataset.k=k;const im=b.firstChild;im.src='img/turret/lv'+(t.lv+1)+'_preview.png';im.style.filter=C.TUR.css[t.lv]||'';im.onerror=()=>im.style.display='none';
+b.querySelector('.lv').textContent='Lv'+(t.lv+1);b.querySelector('.un').textContent=C.T[t.lv].n;b.querySelector('.uc').innerHTML=nx?'<small>💰</small>'+nx.cost:'<small>★</small>MAX';fitU(b);b.setAttribute('aria-label',['左','中','右'][i]+'砲台 '+(nx?'升級到 '+nx.n+'，'+nx.cost+' 金幣':'已滿級'))}
 const ok=nx&&G.gold>=nx.cost;b.classList.toggle('ok',!!ok);b.classList.toggle('no',!!nx&&!ok);b.classList.toggle('max',!nx);
 b.querySelector('.up').style.width=nx?Math.min(100,G.gold/nx.cost*100)+'%':'0';b.classList.toggle('sel',G.sel===i)})}
 let last=0;
