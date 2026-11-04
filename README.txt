@@ -110,3 +110,4 @@ V2.3.3  Boss 寶物視窗：mark 改為只在標題禮物右側一個（寬 18%�
 V2.3.4  瘦身：首頁主畫面 bg-center.png（383KB，無透明）改為 bg-center.jpg（222KB，品質 85）；刪除未使用的 img/horse/horse_fire_*.png、img/turret/*.svg、index.backup.html
 V2.3.5  延遲載入：開場只載第 1 張地圖；第 1 隻 Boss、寶物視窗與結算視窗圖片改在頁面載完後才在背景下載；之後每隻 Boss 出場時預載下一隻 Boss 與下一張地圖（needBoss / needMap）。首頁階段的圖片下載量約從 6.7MB 降到 3.3MB
 V2.3.6  圖片改用 WebP：除了 bg-center.jpg（轉 WebP 反而變大，維持 JPG）以外，其餘 87 張圖都轉成 .webp（品質 85；少數無損 WebP 更小的就用無損），index.html 路徑同步改為 .webp。img/ 從約 6.7MB 降到 4.5MB。注意：之後新增或替換圖片時，檔名請用 .webp，或同步修改 CONFIG 裡的路徑
+V2.3.7  清理 CONFIG：GROUND 只留 top、WALL 只留 scale；移除沒有作用的 img / crop / sky 舊欄位（各地圖的裁切請改 MAPS 裡的 gcrop / wcrop / sky）

@@ -159,9 +159,9 @@ BOSS2:{frames:['40','41','42','43','44','45','46'].map(n=>'img/boss2/'+n+'.webp'
 BOSS3:{frames:['60','61','62','63','64','65'].map(n=>'img/boss3/'+n+'.webp'),atk:['70','71','72','73'].map(n=>'img/boss3/'+n+'.webp'),atkFit:1,hitC:['#1f7dff','#7fe6ff'],zap:1,dieC:['120,200,255','25,105,255','222,242,255']},
 BOSS4:{frames:['80','81','82','83','84','85'].map(n=>'img/boss4/'+n+'.webp'),atk:['91','92','93','90'].map(n=>'img/boss4/'+n+'.webp'),atkFit:1,hitC:['#ff4a1a','#ffc23a'],fire:1,fireC:['255,120,30','200,30,0','rgba(170,20,0,.85)','#ff6a1a','#fff1b0'],dieC:['255,140,40','200,30,0','255,236,200']},// 熔岩魔王：frames 走路 80～85；atk 依序＝攻擊中段（集氣）、後段（光束）、命中（X 斬）、起手（站姿）；fireC 熔岩色火焰
 TUR:{lv:[1,2,3].map(n=>({base:'img/turret/lv'+n+'_base.webp',barrel:'img/turret/lv'+n+'_barrel.webp'})),mz:[.35,.45,.45],css:['hue-rotate(-50deg)','none','hue-rotate(60deg)'],upT:1.2,upC:['#7dffb0','#5cc8ff','#c98bff'],size:125,px:.5,py:213/320},
-GROUND:{img:'img/snowscape.webp',crop:[8,48,1064,381],top:-36,sky:[428,130,226,240]},
+GROUND:{top:-36},
 HERO:{frames:['01_ready','02_press','03_recoil','04_reset'].map(n=>'img/horse/horse_rear_'+n+'.webp'),win:'img/horse/horse_win.webp',winT:2.6,winBig:1.3,winJump:60,winSay:'贏啦！',winConf:46,size:100,foot:.93},
-WALL:{img:'img/frost_castle_wall.webp',crop:[6,112,1069,179],scale:.8},
+WALL:{scale:.8},
 // Boss 寶物視窗：全部用 img/gif_pop 的圖；換圖只要改這裡的路徑（prizes 的 t 是圖片替代文字）
 PROMO:{url:'https://fb02.fuma888.com/Manger/register.aspx',dir:'img/gif_pop/',frame:'01_frame.webp',logo:'09_logo_FM_Fuma.webp',title:'08_title_boss_reward.webp',btn:'06_button_view_offers.webp',cont:'07_button_continue.webp',mark:'10_mark.webp',
 prizes:[{img:'02_button_reward_368.webp',t:'體驗金 368'},{img:'03_button_first_deposit.webp',t:'首儲 1000 送 1000'},{img:'04_button_slot_rebate.webp',t:'電子全館 返 1%'},{img:'05_button_daily_weekly.webp',t:'每日任務 每週任務'}]},
