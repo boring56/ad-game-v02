@@ -47,7 +47,7 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;displa
 #ov3::before{content:'';position:absolute;left:50%;top:45%;width:760px;height:760px;margin:-380px 0 0 -380px;border-radius:50%;background:repeating-conic-gradient(rgba(255,214,90,.2) 0 9deg,transparent 9deg 22.5deg);-webkit-mask:radial-gradient(closest-side,#000 25%,transparent);mask:radial-gradient(closest-side,#000 25%,transparent);animation:pmspin 18s linear infinite}
 /* Boss 寶物視窗（圖片版，img/gif_pop）：外框 01 為底，內容以外框寬高的 % 定位，任何螢幕都等比縮放 */
 #ov3{container-type:size;position:fixed;inset:0;z-index:50}/* 寶物視窗遮罩蓋滿整個螢幕（含上方資訊列與下方按鈕列），不只遊戲畫面 */
-#ov3>.pi{position:relative;width:86%;width:min(86cqw,47cqh);aspect-ratio:572/1000;margin-bottom:8%;padding:0;border:0;border-radius:0;background:url(img/gif_pop/01_frame.png) center/100% 100% no-repeat;box-shadow:none;filter:drop-shadow(0 12px 26px rgba(0,10,40,.55));animation:pmpop .45s cubic-bezier(.2,1.5,.4,1) both}
+#ov3>.pi{position:relative;width:86%;width:min(86cqw,47cqh);aspect-ratio:572/1000;margin-bottom:8%;padding:0;border:0;border-radius:0;background:url(img/gif_pop/01_frame.webp) center/100% 100% no-repeat;box-shadow:none;filter:drop-shadow(0 12px 26px rgba(0,10,40,.55));animation:pmpop .45s cubic-bezier(.2,1.5,.4,1) both}
 .pi>img,.pi>button,.pi>#pz{position:absolute;left:0;right:0;margin:0 auto;display:block}
 .pi .pi-mark{top:20.8%;width:18%;margin:0;z-index:1;animation:pmpop .5s .35s cubic-bezier(.2,1.5,.4,1) both,pifl 3s 1s ease-in-out infinite}.pi .pi-mark.r{left:auto;right:12%}/* 10_mark：標題禮物右側一個 */
 .pi .pi-logo{top:5%;width:70%;animation:pifl 3s ease-in-out infinite}
@@ -75,7 +75,7 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;displa
 .ov .b.pri{background:linear-gradient(#ffe68a,#ffb81f);border-color:#c98a00;color:#4a2a00;box-shadow:0 3px 0 #b07800}
 .ov .b:not(.hb):active{transform:translateY(2px);box-shadow:0 1px 0 #3d7fa8}.ov .b.pri:active{box-shadow:0 1px 0 #b07800}
 #ov2{position:fixed;inset:0;z-index:40;container-type:size;/* 結算畫面遮罩蓋滿整個螢幕 */background:radial-gradient(circle at 50% 42%,rgba(140,25,40,.5),rgba(6,14,30,.86) 72%);overflow:hidden}
-#ov2>.fp{position:relative;padding:0;border:0;border-radius:0;box-shadow:none;width:min(88cqw,57cqh);max-width:460px;aspect-ratio:1027/1532;container-type:inline-size;background:url(img/fail_pop/01_frame.png) center/100% 100% no-repeat;filter:drop-shadow(0 12px 26px rgba(0,10,40,.55));animation:gopop .5s cubic-bezier(.2,1.6,.4,1) both}/* 結算視窗（img/fail_pop）：位置用框圖的百分比，字級用 cqw 跟著框圖縮放 */
+#ov2>.fp{position:relative;padding:0;border:0;border-radius:0;box-shadow:none;width:min(88cqw,57cqh);max-width:460px;aspect-ratio:1027/1532;container-type:inline-size;background:url(img/fail_pop/01_frame.webp) center/100% 100% no-repeat;filter:drop-shadow(0 12px 26px rgba(0,10,40,.55));animation:gopop .5s cubic-bezier(.2,1.6,.4,1) both}/* 結算視窗（img/fail_pop）：位置用框圖的百分比，字級用 cqw 跟著框圖縮放 */
 .fp>div{position:absolute;left:0;right:0;margin:0 auto}.fp img{display:block;width:100%;pointer-events:none}
 .fp-t{top:31.5%;width:62%;animation:goin .4s ease-out .25s both}
 .fp-t b{position:absolute;left:0;right:0;top:61%;transform:translateY(-50%);text-align:center;font:10.5cqw/1 Impact,"Arial Black",sans-serif;color:#ffe27a;letter-spacing:.3cqw;text-shadow:0 .6cqw 0 #a86a00,0 0 3cqw rgba(255,210,80,.45)}
@@ -129,10 +129,10 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;displa
 <div class="ov" id="ov4" style="display:none"><div class="tu"><div class="tu-ic">📖</div><div class="tu-rb">遊戲教學</div><div class="tu-sub">守住城牆，擊退冰雪大軍！</div><div class="tu-ls" id="tt"></div><div class="pb"><button class="b pri" id="tstart">⚔ 開始挑戰！</button><button class="b" id="tback">返回</button></div></div></div>
 <div class="ov" id="ov3" style="display:none"><div class="pi" role="dialog" aria-label="Boss 寶物！恭喜開啟！專屬優惠活動"><img class="pi-logo" id="plogo" alt=""><img class="pi-title" id="ptitle" alt="Boss 寶物！恭喜開啟！專屬優惠活動"><img class="pi-mark r" alt=""><div id="pz"></div><button id="pweb"><img id="pwebi" alt="查看活動優惠"></button><button id="pcont"><img id="pconti" alt="繼續遊玩"></button></div></div>
 <div class="ov" id="ov2" style="display:none"><div class="fp" role="dialog" aria-label="城牆失守">
-<div class="fp-t"><img src="img/fail_pop/05_time.png" alt="存活時間"><b id="goT">0:00</b><em id="goNB">🏆 新紀錄</em></div>
-<div class="fp-k"><div style="--d:0s"><img src="img/fail_pop/02_monster.png" alt="小兵"><b id="goM">0</b></div><div style="--d:.08s"><img src="img/fail_pop/03_monster.png" alt="頭領"><b id="goC">0</b></div><div style="--d:.16s"><img src="img/fail_pop/04_monster.png" alt="Boss"><b id="goB">0</b></div></div>
-<div class="fp-r" style="top:62.5%;--d:.26s"><img src="img/fail_pop/06_coin.png" alt="累計金幣"><b id="goG" class="gd">0</b></div><div class="fp-r" style="top:69.5%;--d:.32s"><img src="img/fail_pop/07_best.png" alt="本機最佳"><b id="goBest">0:00</b></div>
-<div class="fp-b"><button id="again"><img src="img/fail_pop/08_btn_again.png" alt="再玩一次"></button><button id="home2"><img src="img/fail_pop/09_btn_back.png" alt="回首頁"></button></div></div></div>
+<div class="fp-t"><img src="img/fail_pop/05_time.webp" alt="存活時間"><b id="goT">0:00</b><em id="goNB">🏆 新紀錄</em></div>
+<div class="fp-k"><div style="--d:0s"><img src="img/fail_pop/02_monster.webp" alt="小兵"><b id="goM">0</b></div><div style="--d:.08s"><img src="img/fail_pop/03_monster.webp" alt="頭領"><b id="goC">0</b></div><div style="--d:.16s"><img src="img/fail_pop/04_monster.webp" alt="Boss"><b id="goB">0</b></div></div>
+<div class="fp-r" style="top:62.5%;--d:.26s"><img src="img/fail_pop/06_coin.webp" alt="累計金幣"><b id="goG" class="gd">0</b></div><div class="fp-r" style="top:69.5%;--d:.32s"><img src="img/fail_pop/07_best.webp" alt="本機最佳"><b id="goBest">0:00</b></div>
+<div class="fp-b"><button id="again"><img src="img/fail_pop/08_btn_again.webp" alt="再玩一次"></button><button id="home2"><img src="img/fail_pop/09_btn_back.webp" alt="回首頁"></button></div></div></div>
 </div>
 <div id="bar">
 <button class="b u" data-i="0"></button><button class="b u" data-i="1"></button><button class="b u" data-i="2"></button>
@@ -140,31 +140,31 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;displa
 <script>
 const CONFIG={W:360,H:640,CROP:24,VCROP:120,VCROPB:90,wallY:363,wallH:64,life:100,cap:80,speed:2,bossGap:25,maxBoss:3,bossGrow:1.18,bossCap:6,ty:445,hy:468,tx:[75,180,285],
 E:{minion:{hp:20,spd:45,dmg:1,rew:5,r:10,drop:1/25},chief:{hp:90,spd:32,dmg:2,rew:10,r:14,drop:1/5},boss:{hp:400,spd:18,dmg:5,rew:18,r:28,drop:1}},
-HOME:{bg:'img/bg-center.jpg',side:'img/background.jpg',dim:.5,start:'img/btn-start.png',teach:'img/btn-teach.png'},
-BOSS:{frames:['011','012','013','014','015','016','017','018'].map(n=>'img/boss/'+n+'.png'),atk:['020','021','022','023'].map(n=>'img/boss/'+n+'.png'),hitC:['#c98a1e','#ffd34d'],sand:1,dieC:['255,205,90','190,130,30','255,242,205'],h:110,fps:6,idleFps:3},
+HOME:{bg:'img/bg-center.jpg',side:'img/background.webp',dim:.5,start:'img/btn-start.webp',teach:'img/btn-teach.webp'},
+BOSS:{frames:['011','012','013','014','015','016','017','018'].map(n=>'img/boss/'+n+'.webp'),atk:['020','021','022','023'].map(n=>'img/boss/'+n+'.webp'),hitC:['#c98a1e','#ffd34d'],sand:1,dieC:['255,205,90','190,130,30','255,242,205'],h:110,fps:6,idleFps:3},
 SHAKE:{minion:3,chief:5,boss:11,land:14,kill:10,rot:.012},
 BINTRO:{wait:1.9,fall:.45,y:100,names:['冥界胡狼神','魅影埃及女王','雷鎚狂戰士','熔岩魔王']},
 BDEATH:{t:1.9,boom:1.2,gap:.13},
 SDEATH:{t:.6,grav:520},
 COIN:{n:8,fly:.42,wait:.6},
 MAPSTEP:2,
-MAPS:[{name:'冰霜城堡',ground:'img/map/01_snowscape.png',wall:'img/map/01_frost_castle_wall.png',gcrop:[8,48,1064,381],wcrop:[6,112,1069,179],sky:[428,130,226,240],bg:'#deeefb',c:'#3d9bd8'},{name:'冰封森林',ground:'img/map/02_frozen_forest_ground.png',wall:'img/map/02_frozen_forest_wall.png',gcrop:[9,7,1064,430],wcrop:[6,112,1069,182],sky:[428,130,226,240],bg:'#b0e6eb',c:'#1f9e8f'},{name:'水晶裂谷',ground:'img/map/03_crystal_rift_ground.png',wall:'img/map/03_crystal_rift_wall.png',gcrop:[10,11,1063,422],wcrop:[7,112,1070,180],sky:[428,130,226,240],bg:'#ccc3f8',c:'#6a4fd8'},{name:'魔王城',ground:'img/map/04_demon_castle_ground.png',wall:'img/map/04_demon_castle_wall.png',gcrop:[5,6,1070,437],wcrop:[5,112,1070,183],sky:[428,130,226,240],bg:'#e0b6f8',c:'#c0246a'}],
+MAPS:[{name:'冰霜城堡',ground:'img/map/01_snowscape.webp',wall:'img/map/01_frost_castle_wall.webp',gcrop:[8,48,1064,381],wcrop:[6,112,1069,179],sky:[428,130,226,240],bg:'#deeefb',c:'#3d9bd8'},{name:'冰封森林',ground:'img/map/02_frozen_forest_ground.webp',wall:'img/map/02_frozen_forest_wall.webp',gcrop:[9,7,1064,430],wcrop:[6,112,1069,182],sky:[428,130,226,240],bg:'#b0e6eb',c:'#1f9e8f'},{name:'水晶裂谷',ground:'img/map/03_crystal_rift_ground.webp',wall:'img/map/03_crystal_rift_wall.webp',gcrop:[10,11,1063,422],wcrop:[7,112,1070,180],sky:[428,130,226,240],bg:'#ccc3f8',c:'#6a4fd8'},{name:'魔王城',ground:'img/map/04_demon_castle_ground.webp',wall:'img/map/04_demon_castle_wall.webp',gcrop:[5,6,1070,437],wcrop:[5,112,1070,183],sky:[428,130,226,240],bg:'#e0b6f8',c:'#c0246a'}],
 ANN:{y:150,gap:.25,stageAfter:2.2,maxFloat:6,pri:{ko:3,stage:2,boss:1}},
 SLIME:{w:2.3,h:1.9,hopH:.55,hopM:2.2,hopK:1.5,minion:['#e4f8ff','#8ad6f7','#3f9fd6','rgba(25,80,130,.75)'],chief:['#cddcff','#7392f0','#3346b8','#1c2470'],
 th:[{n:'冰雪史萊姆',deco:'snow',blush:1,m:['#e4f8ff','#8ad6f7','#3f9fd6','rgba(25,80,130,.75)'],k:['#cddcff','#7392f0','#3346b8','#1c2470'],ck:'#eafcff',cs:'#4aa8dc',hp:1,spd:1,hop:1},
 {n:'森林史萊姆',deco:'leaf',blush:1,m:['#e6fff4','#7fe0c0','#2fa88a','rgba(20,90,70,.8)'],k:['#d4f5d0','#5fbf7a','#2b7a4b','#16402a'],ck:'#a8743a',cs:'#5a3a18',hp:1.15,spd:1.06,hop:1.3},
 {n:'水晶史萊姆',deco:'crystal',blush:0,m:['#f5ecff','#c49bff','#7c4ddb','rgba(70,30,140,.8)'],k:['#e6d4ff','#9a6bff','#5a2fc0','#2a1170'],ck:'#f4e8ff',cs:'#8a5ae0',hp:1.3,spd:.95,hop:.8},
 {n:'惡魔史萊姆',deco:'horn',blush:0,eye:'#ff2a4a',m:['#ffd6e6','#ff6f9e','#c0245a','rgba(100,10,40,.85)'],k:['#e8c4ff','#a03ad0','#5a1080','#2a0640'],ck:'#3a1030',cs:'#12040e',hp:1.45,spd:1.12,hop:1.1}]},
-BOSS2:{frames:['40','41','42','43','44','45','46'].map(n=>'img/boss2/'+n+'.png'),atk:['50','51','52','53'].map(n=>'img/boss2/'+n+'.png'),hitC:['#8a2be2','#ff7af5'],fire:1,dieC:['205,110,255','120,30,220','246,224,255']},
-BOSS3:{frames:['60','61','62','63','64','65'].map(n=>'img/boss3/'+n+'.png'),atk:['70','71','72','73'].map(n=>'img/boss3/'+n+'.png'),atkFit:1,hitC:['#1f7dff','#7fe6ff'],zap:1,dieC:['120,200,255','25,105,255','222,242,255']},
-BOSS4:{frames:['80','81','82','83','84','85'].map(n=>'img/boss4/'+n+'.png'),atk:['91','92','93','90'].map(n=>'img/boss4/'+n+'.png'),atkFit:1,hitC:['#ff4a1a','#ffc23a'],fire:1,fireC:['255,120,30','200,30,0','rgba(170,20,0,.85)','#ff6a1a','#fff1b0'],dieC:['255,140,40','200,30,0','255,236,200']},// 熔岩魔王：frames 走路 80～85；atk 依序＝攻擊中段（集氣）、後段（光束）、命中（X 斬）、起手（站姿）；fireC 熔岩色火焰
-TUR:{lv:[1,2,3].map(n=>({base:'img/turret/lv'+n+'_base.png',barrel:'img/turret/lv'+n+'_barrel.png'})),mz:[.35,.45,.45],css:['hue-rotate(-50deg)','none','hue-rotate(60deg)'],upT:1.2,upC:['#7dffb0','#5cc8ff','#c98bff'],size:125,px:.5,py:213/320},
-GROUND:{img:'img/snowscape.png',crop:[8,48,1064,381],top:-36,sky:[428,130,226,240]},
-HERO:{frames:['01_ready','02_press','03_recoil','04_reset'].map(n=>'img/horse/horse_rear_'+n+'.png'),win:'img/horse/horse_win.png',winT:2.6,winBig:1.3,winJump:60,winSay:'贏啦！',winConf:46,size:100,foot:.93},
-WALL:{img:'img/frost_castle_wall.png',crop:[6,112,1069,179],scale:.8},
+BOSS2:{frames:['40','41','42','43','44','45','46'].map(n=>'img/boss2/'+n+'.webp'),atk:['50','51','52','53'].map(n=>'img/boss2/'+n+'.webp'),hitC:['#8a2be2','#ff7af5'],fire:1,dieC:['205,110,255','120,30,220','246,224,255']},
+BOSS3:{frames:['60','61','62','63','64','65'].map(n=>'img/boss3/'+n+'.webp'),atk:['70','71','72','73'].map(n=>'img/boss3/'+n+'.webp'),atkFit:1,hitC:['#1f7dff','#7fe6ff'],zap:1,dieC:['120,200,255','25,105,255','222,242,255']},
+BOSS4:{frames:['80','81','82','83','84','85'].map(n=>'img/boss4/'+n+'.webp'),atk:['91','92','93','90'].map(n=>'img/boss4/'+n+'.webp'),atkFit:1,hitC:['#ff4a1a','#ffc23a'],fire:1,fireC:['255,120,30','200,30,0','rgba(170,20,0,.85)','#ff6a1a','#fff1b0'],dieC:['255,140,40','200,30,0','255,236,200']},// 熔岩魔王：frames 走路 80～85；atk 依序＝攻擊中段（集氣）、後段（光束）、命中（X 斬）、起手（站姿）；fireC 熔岩色火焰
+TUR:{lv:[1,2,3].map(n=>({base:'img/turret/lv'+n+'_base.webp',barrel:'img/turret/lv'+n+'_barrel.webp'})),mz:[.35,.45,.45],css:['hue-rotate(-50deg)','none','hue-rotate(60deg)'],upT:1.2,upC:['#7dffb0','#5cc8ff','#c98bff'],size:125,px:.5,py:213/320},
+GROUND:{img:'img/snowscape.webp',crop:[8,48,1064,381],top:-36,sky:[428,130,226,240]},
+HERO:{frames:['01_ready','02_press','03_recoil','04_reset'].map(n=>'img/horse/horse_rear_'+n+'.webp'),win:'img/horse/horse_win.webp',winT:2.6,winBig:1.3,winJump:60,winSay:'贏啦！',winConf:46,size:100,foot:.93},
+WALL:{img:'img/frost_castle_wall.webp',crop:[6,112,1069,179],scale:.8},
 // Boss 寶物視窗：全部用 img/gif_pop 的圖；換圖只要改這裡的路徑（prizes 的 t 是圖片替代文字）
-PROMO:{url:'https://fb02.fuma888.com/Manger/register.aspx',dir:'img/gif_pop/',frame:'01_frame.png',logo:'09_logo_FM_Fuma.png',title:'08_title_boss_reward.png',btn:'06_button_view_offers.png',cont:'07_button_continue.png',mark:'10_mark.png',
-prizes:[{img:'02_button_reward_368.png',t:'體驗金 368'},{img:'03_button_first_deposit.png',t:'首儲 1000 送 1000'},{img:'04_button_slot_rebate.png',t:'電子全館 返 1%'},{img:'05_button_daily_weekly.png',t:'每日任務 每週任務'}]},
+PROMO:{url:'https://fb02.fuma888.com/Manger/register.aspx',dir:'img/gif_pop/',frame:'01_frame.webp',logo:'09_logo_FM_Fuma.webp',title:'08_title_boss_reward.webp',btn:'06_button_view_offers.webp',cont:'07_button_continue.webp',mark:'10_mark.webp',
+prizes:[{img:'02_button_reward_368.webp',t:'體驗金 368'},{img:'03_button_first_deposit.webp',t:'首儲 1000 送 1000'},{img:'04_button_slot_rebate.webp',t:'電子全館 返 1%'},{img:'05_button_daily_weekly.webp',t:'每日任務 每週任務'}]},
 T:[{n:'雪球',cost:0,dmg:5,cd:1,range:260,sp:380},{n:'小槍',cost:50,dmg:10,cd:.5,range:300,sp:520},{n:'機關槍',cost:100,dmg:8,cd:.2,range:330,sp:680}]};
 const C=CONFIG,SPD0=C.speed,$=i=>document.getElementById(i),UB=[...document.querySelectorAll('[data-i]')];
 const BL=[C.BOSS,C.BOSS2,C.BOSS3,C.BOSS4];// 所有 Boss 依序輪替；要再加 Boss 就在 CONFIG 新增 BOSS5 並加進這裡，BINTRO.names 同步加名字
@@ -304,7 +304,7 @@ shake(C.SHAKE.kill,.6);SFX.boom();G.win=C.HERO.winT;G.wj=0;G.wl=0;G.flash=.35;an
 if(d.ch)G.ch.push({x:Math.min(330,Math.max(30,d.x)),y:Math.min(d.y,C.wallY-14),t:20,boss:true})}}
 function showPromo(){G.paused=true;G.promo=true;const P=C.PROMO,d=P.dir||'';$('plogo').src=d+P.logo;$('ptitle').src=d+P.title;$('pwebi').src=d+P.btn;$('pconti').src=d+P.cont;document.querySelectorAll('.pi-mark').forEach(m=>m.src=d+P.mark);document.querySelector('#ov3>.pi').style.backgroundImage='url('+d+P.frame+')';
 $('pz').innerHTML=P.prizes.map((p,i)=>'<img src="'+d+p.img+'" alt="'+(p.t||'')+'" style="--d:'+(i*.12)+'s">').join('');$('ov3').style.display='flex'}
-later(()=>{const P=C.PROMO,d=P.dir||'';[P.frame,P.logo,P.title,P.mark,P.btn,P.cont,...P.prizes.map(p=>p.img)].forEach(f=>{const i=new Image();i.src=d+f});['01_frame','05_time','02_monster','03_monster','04_monster','06_coin','07_best','08_btn_again','09_btn_back'].forEach(f=>{const i=new Image();i.src='img/fail_pop/'+f+'.png'})});// 頁面載完後才預先載入寶物視窗、結算視窗圖片（不跟首頁搶頻寬），開啟時不會一張張跳出來
+later(()=>{const P=C.PROMO,d=P.dir||'';[P.frame,P.logo,P.title,P.mark,P.btn,P.cont,...P.prizes.map(p=>p.img)].forEach(f=>{const i=new Image();i.src=d+f});['01_frame','05_time','02_monster','03_monster','04_monster','06_coin','07_best','08_btn_again','09_btn_back'].forEach(f=>{const i=new Image();i.src='img/fail_pop/'+f+'.webp'})});// 頁面載完後才預先載入寶物視窗、結算視窗圖片（不跟首頁搶頻寬），開啟時不會一張張跳出來
 function openChest(c){c.t=0;SFX.chest();if(c.boss){showPromo();return}const r=rnd();
 if(r<.5){const g=10+Math.floor(rnd()*21);G.gold+=g;G.goldTot+=g;bump();SFX.coin();flt(c.x,c.y-10,'+'+g+'💰','#f5b800')}
 else if(r<.8){G.life=Math.min(C.life,G.life+3);SFX.heal();flt(c.x,c.y-10,'修復 +3','#2fbf5f')}
@@ -595,7 +595,7 @@ const lf=G.life/C.life;hv('hl','<small>❤️</small>'+G.life);$('hl').classList
 hv('hb','<small>👹</small>'+(G.bc>=C.maxBoss&&G.t>=G.nb?'<span style="font:700 .62em system-ui">已滿</span>':Math.max(0,Math.ceil(G.nb-G.t))+'s')+(G.bc?'<em>×'+G.bc+'</em>':''));
 UB.forEach(b=>{const i=+b.dataset.i,t=G.tu[i],nx=C.T[t.lv+1],l=nx?t.lv+1:t.lv;
 if(!b.firstChild||b.firstChild.tagName!=='IMG')b.innerHTML='<img class="ti" alt=""><span class="ut"><span class="un"></span><span class="uc"></span></span><i class="up"></i><i class="lv"></i>';
-const k=l+'|'+!!nx;if(b.dataset.k!==k){b.dataset.k=k;const im=b.firstChild;im.src='img/turret/lv'+(t.lv+1)+'_preview.png';im.style.filter=C.TUR.css[t.lv]||'';im.onerror=()=>im.style.display='none';
+const k=l+'|'+!!nx;if(b.dataset.k!==k){b.dataset.k=k;const im=b.firstChild;im.src='img/turret/lv'+(t.lv+1)+'_preview.webp';im.style.filter=C.TUR.css[t.lv]||'';im.onerror=()=>im.style.display='none';
 b.querySelector('.lv').textContent='Lv'+(t.lv+1);b.querySelector('.un').textContent=C.T[t.lv].n;b.querySelector('.uc').innerHTML=nx?'<small>💰</small>'+nx.cost:'<small>★</small>MAX';fitU(b);b.setAttribute('aria-label',['左','中','右'][i]+'砲台 '+(nx?'升級到 '+nx.n+'，'+nx.cost+' 金幣':'已滿級'))}
 const ok=nx&&G.gold>=nx.cost;b.classList.toggle('ok',!!ok);b.classList.toggle('no',!!nx&&!ok);b.classList.toggle('max',!nx);
 b.querySelector('.up').style.width=nx?Math.min(100,G.gold/nx.cost*100)+'%':'0';b.classList.toggle('sel',G.sel===i)})}
