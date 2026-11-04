@@ -175,8 +175,13 @@ try{best=+localStorage.getItem('ponyBest')||0;snd=localStorage.getItem('ponySnd'
 const DEC=Array.from({length:40},()=>[sr()*C.W,C.wallY+C.wallH+sr()*(C.H-C.wallY-C.wallH),2+sr()*3]);
 const SNOW=Array.from({length:50},()=>[sr()*C.W,sr()*C.H,.5+sr()*1.5]);
 const ldImg=s=>{const o={i:new Image(),w:null};o.i.onload=()=>{const c=document.createElement('canvas'),x=c.getContext('2d');c.width=o.i.naturalWidth;c.height=o.i.naturalHeight;
-x.drawImage(o.i,0,0);x.globalCompositeOperation='source-atop';x.fillStyle='rgba(255,255,255,.75)';x.fillRect(0,0,c.width,c.height);o.w=c};o.i.src=s;return o},BI=BL.map(b=>b.frames.map(ldImg)),BA=BL.map(b=>b.atk.map(ldImg)),rdy=a=>a.length&&a.every(o=>o.w);
-const MP=C.MAPS.map(m=>{const g=new Image(),w=new Image();g.src=m.ground;w.src=m.wall;return{g,w}});const HI=C.HERO.frames.map(s=>{const i=new Image();i.src=s;return i}),HW=new Image();HW.src=C.HERO.win;
+x.drawImage(o.i,0,0);x.globalCompositeOperation='source-atop';x.fillStyle='rgba(255,255,255,.75)';x.fillRect(0,0,c.width,c.height);o.w=c};o.i.src=s;return o},BI=BL.map(()=>[]),BA=BL.map(()=>[]),rdy=a=>a.length&&a.every(o=>o.w);
+// 延遲載入：Boss 與地圖用到前才下載（開場只載第 1 張地圖；第 1 隻 Boss 在頁面載完後；之後每隻 Boss 出場時預載下一隻 Boss 與下一張地圖）
+const later=f=>document.readyState==='complete'?setTimeout(f,0):addEventListener('load',f);
+function needBoss(k){k%=BL.length;if(!BI[k].length){BI[k]=BL[k].frames.map(ldImg);BA[k]=BL[k].atk.map(ldImg)}}
+const MP=C.MAPS.map(()=>({g:new Image(),w:new Image()}));
+function needMap(k){k=Math.max(0,Math.min(k|0,C.MAPS.length-1));const p=MP[k],m=C.MAPS[k];if(!p.g.getAttribute('src')){p.g.src=m.ground;p.w.src=m.wall}}
+needMap(0);later(()=>needBoss(0));const HI=C.HERO.frames.map(s=>{const i=new Image();i.src=s;return i}),HW=new Image();HW.src=C.HERO.win;
 const TI=C.TUR.lv.map(o=>[o.base,o.barrel].map(s=>{const i=new Image();i.src=s;return i})),turOk=l=>TI[l]&&TI[l].every(i=>i.complete&&i.naturalWidth),TC=[];
 function turImg(l,k){const i=TI[l][k],f=C.TUR.css[l];if(!f||f==='none')return i;const n=l*2+k;if(!TC[n]){const c=document.createElement('canvas'),x=c.getContext('2d');c.width=i.naturalWidth;c.height=i.naturalHeight;x.filter=f;x.drawImage(i,0,0);TC[n]=c}return TC[n]}
 function bossImg(e){const bi=BI[e.sk|0],ba=BA[e.sk|0];if(!rdy(bi))return null;const p=1-e.atk/2,o=e.att&&rdy(ba)?ba[e.bump>0?2:p<.3?3:p<.7?0:1]:bi[Math.floor(e.ph*(e.att?C.BOSS.idleFps:C.BOSS.fps))%bi.length];return[o.i,o.w]}
@@ -247,7 +252,7 @@ function bump(){const e=$('hg');e.classList.add('bump');setTimeout(()=>e.classLi
 function spawnNormal(m){const p=G.t>=15?Math.min(.25,.08+.02*m):0,type=rnd()<p?'chief':'minion',d=C.E[type],TH=slTh(),hp=d.hp*1.1**m*TH.hp;
 G.en.push({type,x:C.W/2+(rnd()-.5)*(C.W*C.WALL.scale-30),y:-20,hp,max:hp,spd:d.spd*TH.spd,dmg:d.dmg,rew:d.rew,r:d.r,drop:d.drop,att:false,atk:2,stop:C.wallY-d.r-rnd()*14,ph:rnd()*6,hit:0,bump:0,dead:false})}
 function spawnBoss(){const d=C.E.boss,hp=Math.min(d.hp*C.bossGrow**G.k.b,d.hp*C.bossCap);G.bossN++;
-const sk=(G.bossN-1)%BL.length,BI_=C.BINTRO;G.bossName=BI_.names[sk]||'';/*name copied into announcement*/
+const sk=(G.bossN-1)%BL.length,BI_=C.BINTRO;needBoss(sk);needBoss(sk+1);needMap(Math.floor(G.bossN/C.MAPSTEP));G.bossName=BI_.names[sk]||'';/*name copied into announcement*/
 const be={type:'boss',sk,x:70+rnd()*220,y:-90,hp,max:hp,spd:d.spd,dmg:d.dmg,rew:d.rew,r:d.r,drop:1,att:false,atk:2,stop:C.wallY-d.r,ph:0,hit:0,bump:0,dead:false,ent:BI_.wait+BI_.fall,land:0,wq:1};G.en.push(be);
 ann({k:'boss',e:be,name:G.bossName,n:G.bossN});while(G.nb<=G.t)G.nb+=C.bossGap}
 function shake(a,d){if(G.shake<=0||a>=G.sa){G.sa=a;G.sd=d;G.shake=d}}
@@ -265,7 +270,7 @@ function blast(x,y,r,T,c){G.bx.push({x,y,r,t:T,T,c})}
 const BSK=e=>BL[e.sk|0]||C.BOSS;
 function themeFx(B,x,y,k,big){const s=Math.random()*99;if(B.sand)G.sn.push({x,y,t:.7,s,k});if(B.fire)G.fr.push({x,y:y+(big?20:8),t:.55,s,k,c:B.fireC});if(B.zap)G.zp.push({x,y,t:.28,s,k,full:1})}
 function ann(a){a.at=a.at||0;G.aq.push(a)}
-function annStart(a){const P=C.ANN.pri;let d=1;if(a.k==='boss'){G.warn=2.2;G.bossName=a.name;G.bossNo=a.n;SFX.boss();a.e.wq=0;d=2.2}else if(a.k==='ko'){G.bk=1.6;d=1.6}else if(a.k==='stage'){G.tr={to:a.to,t:0};d=2.9}G.ac={k:a.k,t:d}}
+function annStart(a){const P=C.ANN.pri;let d=1;if(a.k==='boss'){G.warn=2.2;G.bossName=a.name;G.bossNo=a.n;SFX.boss();a.e.wq=0;d=2.2}else if(a.k==='ko'){G.bk=1.6;d=1.6}else if(a.k==='stage'){needMap(a.to);G.tr={to:a.to,t:0};d=2.9}G.ac={k:a.k,t:d}}
 function annUpd(dt){G.rt+=dt;if(G.ac){G.ac.t-=dt;if(G.ac.t<=0){G.ac=null;G.agap=C.ANN.gap}}if(G.agap>0){G.agap-=dt;return}
 if(!G.ac&&G.aq.length){let bi=-1;for(let i=0;i<G.aq.length;i++){const a=G.aq[i];if(a.at>G.rt)continue;if(bi<0||C.ANN.pri[a.k]>C.ANN.pri[G.aq[bi].k])bi=i}if(bi>=0)annStart(G.aq.splice(bi,1)[0])}}
 const annBig=()=>G.ac&&G.ac.k!=='boss';
@@ -299,7 +304,7 @@ shake(C.SHAKE.kill,.6);SFX.boom();G.win=C.HERO.winT;G.wj=0;G.wl=0;G.flash=.35;an
 if(d.ch)G.ch.push({x:Math.min(330,Math.max(30,d.x)),y:Math.min(d.y,C.wallY-14),t:20,boss:true})}}
 function showPromo(){G.paused=true;G.promo=true;const P=C.PROMO,d=P.dir||'';$('plogo').src=d+P.logo;$('ptitle').src=d+P.title;$('pwebi').src=d+P.btn;$('pconti').src=d+P.cont;document.querySelectorAll('.pi-mark').forEach(m=>m.src=d+P.mark);document.querySelector('#ov3>.pi').style.backgroundImage='url('+d+P.frame+')';
 $('pz').innerHTML=P.prizes.map((p,i)=>'<img src="'+d+p.img+'" alt="'+(p.t||'')+'" style="--d:'+(i*.12)+'s">').join('');$('ov3').style.display='flex'}
-{const P=C.PROMO,d=P.dir||'';[P.frame,P.logo,P.title,P.mark,P.btn,P.cont,...P.prizes.map(p=>p.img)].forEach(f=>{const i=new Image();i.src=d+f})}['01_frame','05_time','02_monster','03_monster','04_monster','06_coin','07_best','08_btn_again','09_btn_back'].forEach(f=>{const i=new Image();i.src='img/fail_pop/'+f+'.png'});// 預先載入寶物視窗、結算視窗圖片，開啟時不會一張張跳出來
+later(()=>{const P=C.PROMO,d=P.dir||'';[P.frame,P.logo,P.title,P.mark,P.btn,P.cont,...P.prizes.map(p=>p.img)].forEach(f=>{const i=new Image();i.src=d+f});['01_frame','05_time','02_monster','03_monster','04_monster','06_coin','07_best','08_btn_again','09_btn_back'].forEach(f=>{const i=new Image();i.src='img/fail_pop/'+f+'.png'})});// 頁面載完後才預先載入寶物視窗、結算視窗圖片（不跟首頁搶頻寬），開啟時不會一張張跳出來
 function openChest(c){c.t=0;SFX.chest();if(c.boss){showPromo();return}const r=rnd();
 if(r<.5){const g=10+Math.floor(rnd()*21);G.gold+=g;G.goldTot+=g;bump();SFX.coin();flt(c.x,c.y-10,'+'+g+'💰','#f5b800')}
 else if(r<.8){G.life=Math.min(C.life,G.life+3);SFX.heal();flt(c.x,c.y-10,'修復 +3','#2fbf5f')}

@@ -108,3 +108,4 @@ V2.3.1  下方升級按鈕的武器名稱改顯示目前等級：Lv1 雪球、Lv
 V2.3.2  Boss 寶物視窗：標題禮物的左右兩邊各加一個 FM 富馬 mark（img/gif_pop/10_mark.png，CONFIG.PROMO.mark），隨標題後彈出並輕微浮動
 V2.3.3  Boss 寶物視窗：mark 改為只在標題禮物右側一個（寬 18%、離右邊 12%），左側 mark 移除
 V2.3.4  瘦身：首頁主畫面 bg-center.png（383KB，無透明）改為 bg-center.jpg（222KB，品質 85）；刪除未使用的 img/horse/horse_fire_*.png、img/turret/*.svg、index.backup.html
+V2.3.5  延遲載入：開場只載第 1 張地圖；第 1 隻 Boss、寶物視窗與結算視窗圖片改在頁面載完後才在背景下載；之後每隻 Boss 出場時預載下一隻 Boss 與下一張地圖（needBoss / needMap）。首頁階段的圖片下載量約從 6.7MB 降到 3.3MB
