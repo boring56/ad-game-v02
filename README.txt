@@ -107,3 +107,4 @@ V2.3.0  下方升級按鈕的等級標籤與砲台圖改顯示「目前等級」
 V2.3.1  下方升級按鈕的武器名稱改顯示目前等級：Lv1 雪球、Lv2 小槍、Lv3 機關槍（價格仍為升級到下一級的費用）
 V2.3.2  Boss 寶物視窗：標題禮物的左右兩邊各加一個 FM 富馬 mark（img/gif_pop/10_mark.png，CONFIG.PROMO.mark），隨標題後彈出並輕微浮動
 V2.3.3  Boss 寶物視窗：mark 改為只在標題禮物右側一個（寬 18%、離右邊 12%），左側 mark 移除
+V2.3.4  瘦身：首頁主畫面 bg-center.png（383KB，無透明）改為 bg-center.jpg（222KB，品質 85）；刪除未使用的 img/horse/horse_fire_*.png、img/turret/*.svg、index.backup.html
