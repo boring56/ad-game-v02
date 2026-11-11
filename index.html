@@ -122,7 +122,25 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;displa
 #hg.bump{animation:bump .3s}
 @keyframes no{20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
 #hg.no{animation:no .35s;background:linear-gradient(#ffe3e3,#ffb3b3)}@keyframes bump{50%{transform:scale(1.4)}}
-</style></head><body>
+</style>
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1009815999782122');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1009815999782122&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+</head><body>
 <div id="hud"><span class="hc" id="ht"><i class="hk">時間</i><b class="hv">⏱0:00</b></span><span class="hc" id="hg"><i class="hk">金幣</i><b class="hv">💰0</b></span><span class="hc" id="hl"><i class="hk">城牆</i><b class="hv">❤️100</b></span><span class="hc" id="hb"><i class="hk">Boss</i><b class="hv">👹25s</b></span></div>
 <div id="stage"><canvas id="cv"></canvas>
 <div class="ov" id="ov1"><div class="hm" id="hm"><button class="b hb" id="go">▶ 開始</button><button class="b hb" id="howto">📖 遊戲教學</button></div></div>
@@ -166,6 +184,7 @@ WALL:{scale:.8},
 PROMO:{url:'https://fb02.fuma888.com/Manger/register.aspx',dir:'img/gif_pop/',frame:'01_frame.webp',logo:'09_logo_FM_Fuma.webp',title:'08_title_boss_reward.webp',btn:'06_button_view_offers.webp',cont:'07_button_continue.webp',mark:'10_mark.webp',
 prizes:[{img:'02_button_reward_368.webp',t:'體驗金 368'},{img:'03_button_first_deposit.webp',t:'首儲 1000 送 1000'},{img:'04_button_slot_rebate.webp',t:'電子全館 返 1%'},{img:'05_button_daily_weekly.webp',t:'每日任務 每週任務'}]},
 T:[{n:'雪球',cost:0,dmg:5,cd:1,range:260,sp:380},{n:'小槍',cost:50,dmg:10,cd:.5,range:300,sp:520},{n:'機關槍',cost:100,dmg:8,cd:.2,range:330,sp:680}]};
+const fbt=e=>{try{window.fbq&&fbq('track',e)}catch(_){}};// Facebook Pixel 事件
 const C=CONFIG,SPD0=C.speed,$=i=>document.getElementById(i),UB=[...document.querySelectorAll('[data-i]')];
 const BL=[C.BOSS,C.BOSS2,C.BOSS3,C.BOSS4];// 所有 Boss 依序輪替；要再加 Boss 就在 CONFIG 新增 BOSS5 並加進這裡，BINTRO.names 同步加名字
 const cv=$('cv'),ctx=cv.getContext('2d'),stage=$('stage');
@@ -305,7 +324,7 @@ if(d.ch)G.ch.push({x:Math.min(330,Math.max(30,d.x)),y:Math.min(d.y,C.wallY-14),t
 function showPromo(){G.paused=true;G.promo=true;const P=C.PROMO,d=P.dir||'';$('plogo').src=d+P.logo;$('ptitle').src=d+P.title;$('pwebi').src=d+P.btn;$('pconti').src=d+P.cont;document.querySelectorAll('.pi-mark').forEach(m=>m.src=d+P.mark);document.querySelector('#ov3>.pi').style.backgroundImage='url('+d+P.frame+')';
 $('pz').innerHTML=P.prizes.map((p,i)=>'<img src="'+d+p.img+'" alt="'+(p.t||'')+'" style="--d:'+(i*.12)+'s">').join('');$('ov3').style.display='flex'}
 later(()=>{const P=C.PROMO,d=P.dir||'';[P.frame,P.logo,P.title,P.mark,P.btn,P.cont,...P.prizes.map(p=>p.img)].forEach(f=>{const i=new Image();i.src=d+f});['01_frame','05_time','02_monster','03_monster','04_monster','06_coin','07_best','08_btn_again','09_btn_back'].forEach(f=>{const i=new Image();i.src='img/fail_pop/'+f+'.webp'})});// 頁面載完後才預先載入寶物視窗、結算視窗圖片（不跟首頁搶頻寬），開啟時不會一張張跳出來
-function openChest(c){c.t=0;SFX.chest();if(c.boss){showPromo();return}const r=rnd();
+function openChest(c){fbt('AddToWishlist');c.t=0;SFX.chest();if(c.boss){showPromo();return}const r=rnd();
 if(r<.5){const g=10+Math.floor(rnd()*21);G.gold+=g;G.goldTot+=g;bump();SFX.coin();flt(c.x,c.y-10,'+'+g+'💰','#f5b800')}
 else if(r<.8){G.life=Math.min(C.life,G.life+3);SFX.heal();flt(c.x,c.y-10,'修復 +3','#2fbf5f')}
 else{G.frenzy=10;SFX.frenzy();flt(c.x,c.y-10,'狂暴！','#ff5252')}}
@@ -611,14 +630,14 @@ cv.addEventListener('pointerdown',e=>{e.preventDefault();if(resume())return;if(G
 const r=cv.getBoundingClientRect(),x=(e.clientX-r.left-ox)/sc,y=(e.clientY-r.top-oy)/sc;
 for(const c of G.ch)if(c.t>0&&Math.hypot(c.x-x,c.y-y)<=(c.boss?34:26)){openChest(c);return}
 let h=-1;C.tx.forEach((tx,i)=>{if(Math.hypot(tx-x,C.ty+10-y)<=42)h=i});G.sel=h;G.selT=5;if(h>=0)upgrade(h)});
-document.querySelectorAll('[data-i]').forEach(b=>b.addEventListener('click',()=>{if(resume())return;G.sel=+b.dataset.i;G.selT=5;upgrade(+b.dataset.i)}));
+document.querySelectorAll('[data-i]').forEach(b=>b.addEventListener('click',()=>{fbt('StartTrial');if(resume())return;G.sel=+b.dataset.i;G.selT=5;upgrade(+b.dataset.i)}));
 function au(){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();
 if(!MG){const k=AC.createDynamicsCompressor();k.threshold.value=-18;k.knee.value=12;k.ratio.value=6;k.attack.value=.003;k.release.value=.2;MG=AC.createGain();MG.gain.value=.9;MG.connect(k);k.connect(AC.destination)}
 AS=false;if(AC.state==='suspended')AC.resume()}catch(e){}}
-$('go').onclick=()=>{au();newGame()};
+$('go').onclick=()=>{fbt('ViewContent');au();newGame()};
 $('again').onclick=()=>{au();newGame()};
 $('pcont').onclick=()=>{au();G.promo=false;G.paused=false;$('ov3').style.display='none';setP(false)};
-$('pweb').onclick=()=>{if(window.FbPlayableAd)FbPlayableAd.onCTAClick();else window.open(C.PROMO.url,'_blank','noopener')};
+$('pweb').onclick=()=>{fbt('CompleteRegistration');if(window.FbPlayableAd)FbPlayableAd.onCTAClick();else window.open(C.PROMO.url,'_blank','noopener')};
 $('bp').onclick=()=>{if(G.mode!=='play'||G.promo)return;au();G.paused=!G.paused;setP(G.paused)};
 // 左上角時間：點擊切換 2x／5x 倍速的功能先拿掉；要恢復就把下一行換回 $('ht').onclick=()=>{if(resume())return;C.speed=C.speed===SPD0?5:SPD0};
 $('ht').onclick=()=>{resume()};
